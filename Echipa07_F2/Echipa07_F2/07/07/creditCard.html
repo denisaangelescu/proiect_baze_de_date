@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plată</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/still.css" rel="stylesheet">
+    <script>
+        function checkPhoneNumber(event) {
+            event.preventDefault();
+            var phone = document.getElementById("phone").value;
+
+            if (phone) {
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "verificare_client_plata.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        if (xhr.responseText == "exists") {
+                            window.location.href = "index.php";
+                        } else {
+                            alert("Trebuie să te înregistrezi înainte de a efectua plata.");
+                        }
+                    }
+                };
+                xhr.send("phone=" + encodeURIComponent(phone));
+            } else {
+                alert("Te rog să introduci numărul de telefon.");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-75">
+          <div class="container">
+            <form id="paymentForm" action="/action_page.php" method="POST">
+      
+              <div class="row">
+                <div class="col-50" id="fifty">
+                  <h3>Plată Online</h3>
+                  <label for="fname"><i class="fa fa-user"></i>Nume</label>
+                  <input type="text" id="fname" name="firstname" placeholder="Condrea">
+                  <label for="fname"><i class="fa fa-user"></i>Prenume</label>
+                  <input type="text" id="fname" name="firstname" placeholder="Cosmin">
+
+                  <!-- Added Phone Number Field -->
+                  <label for="phone"><i class="fa fa-phone"></i>Număr de Telefon</label>
+                  <input type="text" id="phone" name="phone" placeholder="07XX XXX XXX">
+                  
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="state">Tipul abonamentului</label>
+                      <input type="text" id="state" name="state" placeholder="Zi/Lunar/Anual">
+                    </div>
+                    
+                  </div>
+                </div>
+      
+                <div class="col-50" id="fifty">
+                  <h3>Plată</h3>
+                  <label for="fname">Carduri Acceptate</label>
+                  <div class="icon-container">
+                    <i class="fa fa-cc-visa" style="color:navy;"></i>
+                    <i class="fa fa-cc-amex" style="color:blue;"></i>
+                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                    <i class="fa fa-cc-discover" style="color:orange;"></i>
+                  </div>
+                  <label for="cname">Numele Titularului</label>
+                  <input type="text" id="cname" name="cardname" placeholder="John More Doe">
+                  <label for="ccnum">Numărul Cardului</label>
+                  <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                  <label for="expmonth">Luna Expirării</label>
+                  <input type="text" id="expmonth" name="expmonth" placeholder="September">
+      
+                  <div class="row">
+                    <div class="col-50">
+                      <label for="expyear">Anul Expirării</label>
+                      <input type="text" id="expyear" name="expyear" placeholder="2018">
+                    </div>
+                    <div class="col-50">
+                      <label for="cvv">CVV</label>
+                      <input type="text" id="cvv" name="cvv" placeholder="352">
+                    </div>
+                  </div>
+                </div>
+      
+              </div>
+              
+              <button type="submit" class="btn" onclick="checkPhoneNumber(event)">
+                <div class="btn1">Finalizat</div>
+              </button>
+            </form>
+          </div>
+        </div>
+      
+        <div class="col-25">
+          <div class="container">
+            <h4>Tipuri Abonamente
+              <span class="price">
+                <i class="fa fa-shopping-cart"></i>
+                <b>1</b>
+              </span>
+            </h4>
+            <p><a href="price.html">Zi</a> <span class="price">30 lei</span></p>
+            <p><a href="price.html">Lunar</a> <span class="price">200 lei</span></p>
+            <p><a href="price.html">Anual</a> <span class="price">2000 lei</span></p>
+            
+          </div>
+        </div>
+      </div>
+    
+</body>
+</html>

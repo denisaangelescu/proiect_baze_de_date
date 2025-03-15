@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserare Date</title>
+</head>
+<body>
+    <h2>Inserare Date în tabelul tblclientsalifitness</h2>
+    <form method="post" action="butoninserat.php">
+        <label for="idClientSaliFitness">ID Client Fitness:</label><br>
+        <input type="text" id="idClientSaliFitness" name="idClientSaliFitness"><br><br>
+
+        <label for="codClient">Cod Client:</label><br>
+        <input type="text" id="codClient" name="codClient"><br><br>
+        
+        <label for="codSala">Cod Sala:</label><br>
+        <input type="text" id="codSala" name="codSala"><br><br>
+        
+        <label for="dataIntrarii">Data Intrării:</label><br>
+        <input type="date" id="dataIntrarii" name="dataIntrarii"><br><br>
+        
+        <!-- Câmp ascuns pentru codul administratorului -->
+        <input type="hidden" name="cod_administrator" value="0000000000">
+        
+        <input type="submit" value="Adaugă înregistrare">
+    </form>
+</body>
+</html>
