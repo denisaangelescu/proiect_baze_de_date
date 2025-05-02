@@ -1,0 +1,1 @@
+I have developed a complex system for managing fitness centers, optimizing the administration of clients, subscriptions, employees, and resources. The relational database model facilitates efficient queries, providing support for detailed analyses and centralized management.
